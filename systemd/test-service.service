@@ -1,0 +1,12 @@
+[Unit]
+Description=Test Service for Jenkins Deployment
+After=network.target
+
+[Service]
+User=root
+ExecStart=/bin/bash -c "while true; do echo \"Service is running at $(date)\" >> /var/log/test-service.log; sleep 10; done"
+Restart=always
+SyslogIdentifier=test-service
+
+[Install]
+WantedBy=multi-user.target
